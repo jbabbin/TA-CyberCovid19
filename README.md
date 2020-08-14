@@ -5,6 +5,8 @@
 
 This Splunk app was created to provide all (finding more of course!) of current sources to those who are fighting the Cyber attacks related to COVID.
 
+<b> New Python re-write - Changed the Lookup table names to simplify by IoC type </b>
+
 There are other projects that provide similar efforts:
 
 Splunk Team - https://github.com/splunk/ta-covidiocs
@@ -18,36 +20,28 @@ CTC group - https://github.com/secdevopsteam/splunk-covid-hunt
 2. install to '$SPLUNK_HOME/etc/apps' like any other TA
 3. Use Searches
 
+<mark>Edit the inputs.conf to apply the Python re-write </mark>
+
 <h3>Splunk Examples</h3>
 
-    SPL> mysearch_web_logs | lookup  covid_DNS_CTC
+    SPL> mysearch_web_logs | lookup  CyberCOVID_DNS
 
 <h3>pre-load the lookup</h3>
 
-    SPL> mysearch_web_logs | [ | inputlookup COVID_DNS_CTC | fields value, TIsource, logic ]
+    SPL> mysearch_web_logs | [ | inputlookup CyberCOVID_DNS | fields value, TIsource, logic ]
 
 <h4> Splunk Lookup table names </h4> 
 
-    covid_whitelist
-    covid_DNS_1984_sh
-    covid_DNS_DomainTools
-    covid_DNS_RiskIQ
-    covid_DNS_CTC_Vetted
-    covid_DNS_JAS_Global
-    covid_DNS_MalwarePatrol
-    covid_DNS_MerkleID
-    covid_IP_Parthdmaniar
-    covid_HASH_Parthdmaniar
-    covid_HASH_Bazaar
-    covid_URL_Parthdmaniar
-    covid_URL_CTC
-    covid_URL_PhishLabs
+    covid_DNS_List
+    covid_IP_List
+    covid_URL_List
+    covid_HASH_List
 
 ##############################
 
 Author: CTC Member - Jake Babbin
 
-Version: 1.0
+Version: 2.0
 
 <h2>SOURCES for the Lookup files </h2>
 
